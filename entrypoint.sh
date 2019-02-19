@@ -3,11 +3,14 @@
 set -e
 
 if [ "$1" = 'version' ]; then
-  exec ansible --version
+  exec su-exec ansible ansible --version
 
 elif [ "$1" = 'setup' ]; then
-  exec ansible -m setup all
+  exec su-exec ansible ansible -m setup all
+
+elif [ "$1" = 'makemeroot' ]; then
+  exec ash
 
 else
-  exec "$@"
+  exec su-exec ansible "$@"
 fi

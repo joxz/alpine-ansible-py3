@@ -56,7 +56,32 @@ localhost | SUCCESS => {
 
 ### Shell access
 
+Shell access as user `ansible`
+
 ```
-$ docker run -it --rm alpine-ansible-py3:latest /bin/sh
-/ansible #
+$ docker run -it --rm alpine-ansible-py3:latest
+/ansible $ whoami
+ansible
+```
+
+shell access as user `root`
+
+```
+$ docker run -it --rm alpine-ansible-py3:latest makemeroot
+/ansible # whoami
+root
+```
+
+## Make
+
+Makefile included for build, run, test, clean
+
+```
+$ make
+build                          build container
+build-no-cache                 build container without cache
+clean                          remove images
+help                           this help
+run                            run container
+test                           test container with builtin tests
 ```
