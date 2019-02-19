@@ -64,7 +64,7 @@ $ docker run -it --rm alpine-ansible-py3:latest
 ansible
 ```
 
-shell access as user `root`
+Shell access as user `root`
 
 ```
 $ docker run -it --rm alpine-ansible-py3:latest makemeroot

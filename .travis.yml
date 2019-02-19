@@ -1,0 +1,17 @@
+sudo: required
+services:
+  - docker
+
+env:
+  global:
+    - IMAGE_NAME=jones2748/alpine-ansible-py3
+
+script:
+  # build latest image always
+  - docker build --no-cache -t $IMAGE_NAME:latest .
+  # test stuff
+  - docker run -it --rm $IMAGE_NAME version
+  - docker run -it --rm $IMAGE_NAME setup
+
+after_script:
+  - docker images
