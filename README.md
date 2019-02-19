@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joxz/alpine-ansible-py3.svg?branch=master)](https://travis-ci.org/joxz/alpine-ansible-py3)
+
 # alpine-ansible-py3
 
 Minimal [Alpine Linux](https://alpinelinux.org/) docker image for running [Ansible](https://www.ansible.com/) using only Python3.
