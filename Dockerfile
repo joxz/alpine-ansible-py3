@@ -1,7 +1,7 @@
 ARG ALPINE_VERSION=latest
 FROM alpine:${ALPINE_VERSION}
 
-LABEL maintainer = "https://hub.docker.com/u/jones2748"
+LABEL maintainer="Johannes Denninger"
 
 COPY ./entrypoint.sh /usr/local/bin
 

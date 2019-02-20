@@ -6,33 +6,43 @@ Minimal [Alpine Linux](https://alpinelinux.org/) docker image for running [Ansib
 
 ## Build Image
 
-```
-git clone https://github.com/joxz/alpine-ansible-py3.git && cd alpine-ansible-py3
+### Build from git repository
 
-docker build -t alpine-ansible-py3 .
+```
+$ git clone https://github.com/joxz/alpine-ansible-py3.git && cd alpine-ansible-py3
+
+$ make build
 ```
 
-## Pull from Docker Hub
+The image will be tagged with the short hash from the latest git commit, e.g. `jones2748/alpine-ansible-py3:7e4e631`
+
+### Pull from Docker Hub
 
 ```
 $ docker pull jones2748/alpine-ansible-py3:latest
 ```
 
+Docker Hub images will be tagged as `jones2748/alpine-ansible-py3:latest` and/or with git tags, e.g. `jones2748/alpine-ansible-py3:v0.2`
+
 ## Run container
 
-### Run a playbook inside the container
+Run a playbook inside the container:
 
 ```
 $ docker run -it --rm \
     -v ${PWD}:/ansible \
-    jones2748/alpine-ansible-py3:latest \
+    jones2748/alpine-ansible-py3 \
     ansible-playbook -i inventory playbook.yml
 ```
+
+## Sanity checks
+
+`make test` executes both tests listed below
 
 ### Builtin test for `ansible --version`
 
 ```
-$ docker run -it --rm alpine-ansible-py3:latest version
+$ docker run -it --rm alpine-ansible-py3 version
 ansible 2.7.7
   config file = None
   configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -44,7 +54,7 @@ ansible 2.7.7
 ### Builtin test for `ansible -m setup all` (localhost)
 
 ```
-$ docker run -it --rm alpine-ansible-py3:latest setup
+$ docker run -it --rm alpine-ansible-py3t setup
 localhost | SUCCESS => {
     "ansible_facts": {
         "ansible_all_ipv4_addresses": [],
@@ -56,12 +66,12 @@ localhost | SUCCESS => {
 ...
 ```
 
-### Shell access
+## Shell access
 
 Shell access as user `ansible`
 
 ```
-$ docker run -it --rm alpine-ansible-py3:latest
+$ docker run -it --rm alpine-ansible-py3
 /ansible $ whoami
 ansible
 ```
@@ -69,14 +79,14 @@ ansible
 Shell access as user `root`
 
 ```
-$ docker run -it --rm alpine-ansible-py3:latest makemeroot
+$ docker run -it --rm alpine-ansible-py3 makemeroot
 /ansible # whoami
 root
 ```
 
 ## Make
 
-Makefile included for build, run, test, clean
+Makefile included for build, run, test, clean,...
 
 ```
 $ make
@@ -84,6 +94,9 @@ build                          build container
 build-no-cache                 build container without cache
 clean                          remove images
 help                           this help
+history                        show docker history for container
+inspect                        inspect container properties - pretty: 'make inspect | jq .' requires jq
+logs                           show docker logs for container (ONLY possible while container is running)
 run                            run container
 test                           test container with builtin tests
 ```
