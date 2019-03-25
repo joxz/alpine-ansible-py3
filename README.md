@@ -92,6 +92,7 @@ Makefile included for build, run, test, clean,...
 $ make
 build                          build container
 build-no-cache                 build container without cache
+build-ver                      build specific ansible version: make build-ver ALPINE_VERSION="3.9" ANSIBLE_VERSION="2.7.6"
 clean                          remove images
 help                           this help
 history                        show docker history for container

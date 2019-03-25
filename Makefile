@@ -27,6 +27,9 @@ build:  ## build container
 build-no-cache:  ## build container without cache
 	@docker build --no-cache $(BUILDFLAGS) -t $(CONTAINERNAME) .
 
+build-ver:  ## build specific alpine/ansible version: make build-ver ALPINE_VERSION="3.9" ANSIBLE_VERSION="2.7.6"
+	@docker build $(BUILDFLAGS) --build-arg ALPINE_VERSION=$(ALPINE_VERSION) --build-arg ANSIBLE_VERSION=$(ANSIBLE_VERSION) -t $(CONTAINERNAME) .
+
 run:  ## run container
 	@docker run -it --rm $(CONTAINERNAME)
 
