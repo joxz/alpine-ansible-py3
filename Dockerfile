@@ -2,7 +2,7 @@ ARG ALPINE_VERSION=latest
 FROM alpine:${ALPINE_VERSION}
 
 LABEL maintainer="Johannes Denninger"
-ARG ANSIBLE_VERSION="2.7.9"
+ARG ANSIBLE_VERSION="2.8.0"
 
 COPY ./entrypoint.sh /usr/local/bin
 
