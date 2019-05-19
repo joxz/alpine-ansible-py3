@@ -54,7 +54,7 @@ ansible 2.7.7
 ### Builtin test for `ansible -m setup all` (localhost)
 
 ```
-$ docker run -it --rm alpine-ansible-py3t setup
+$ docker run -it --rm alpine-ansible-py3 setup
 localhost | SUCCESS => {
     "ansible_facts": {
         "ansible_all_ipv4_addresses": [],
