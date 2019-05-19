@@ -1,0 +1,18 @@
+name: $(Build.DefinitionName)_$(Date:yyyyMMdd))
+pr:
+- master
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+steps:
+- script: make build-no-cache
+  displayName: build container
+- script: docker images
+  displayName: show images
+- script: make test
+  displayName: make test
+- script: make inspect
+  displayName: docker inspect container
+- script: make history
+  displayName: docker history

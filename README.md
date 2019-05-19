@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/joxz/alpine-ansible-py3.svg?branch=master)](https://travis-ci.org/joxz/alpine-ansible-py3)
+[![Build Status](https://dev.azure.com/john-doe1/alpine-ansible-py3/_apis/build/status/joxz.alpine-ansible-py3?branchName=master)](https://dev.azure.com/john-doe1/alpine-ansible-py3/_build/latest?definitionId=3&branchName=master)
 
 # alpine-ansible-py3
 
